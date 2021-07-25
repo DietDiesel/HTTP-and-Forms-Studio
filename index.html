@@ -3,18 +3,39 @@
 <head>
 	<meta charset="utf-8">
 	<script>
-		// TODO: create a handler
-		// not a chelsea handler tho
-    window.addEventListener("load", function(){
-        // TODO: register the handler
+	let actions = {
+		"google" : "https://www.google.com/search",
+		"duckDuckGo" : "https://duckduckgo.com/",
+		"bing" : "https://www.bing.com/search",
+		"ask" : "https://www.ask.com/web",
+	}
+
+
+	function setSearchEngine () {
+		console.log('setting search engine (eventually)');
+		let engine = document.querySelector("input[name=engine]:checked").value;
+		let actionURL = actions[engine];
+		document.getElementById("searchForm").setAttribute("action", actionURL);
+	}
+
+		
+ 	window.addEventListener("load", function(){
+    
+		document.getElementById("searchForm").addEventListener("submit", setSearchEngine);
     });
 	</script>
 </head>
 
 <body>
-
 	<form id="searchForm">
-    <!-- TODO: add form elements -->
+    	<label>Enter search query here: <input type="text" name="q" /></label><br />
+
+		<label><input type="radio" name="engine" value="google" />The Googs</label><br />
+		<label><input type="radio" name="engine" value="duckDuckGo" />DuckDuckGo</label><br />
+		<label><input type="radio" name="engine" value="bing" />Bing, i guess</label><br />
+		<label><input type="radio" name="engine" value="ask" />Ask is still around, too!</label><br />
+
+		<input type="submit" value="less gooo....">
 	</form>
 
 </body>
