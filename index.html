@@ -1,7 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
 	<script>
 	let actions = {
 		"google" : "https://www.google.com/search",
@@ -10,12 +11,17 @@
 		"ask" : "https://www.ask.com/web",
 	}
 
-
 	function setSearchEngine () {
-		console.log('setting search engine (eventually)');
-		let engine = document.querySelector("input[name=engine]:checked").value;
-		let actionURL = actions[engine];
-		document.getElementById("searchForm").setAttribute("action", actionURL);
+		if (document.querySelector("input[name=engine]:checked").getAttribute("value").length === 0) {
+			alert("ya gotta select a search engine, ya dingus!");
+		} else {
+			let actionURL = actions[eng];
+		}
+		if (document.getElementsByTagName("input").getAttribute("value").length === 0) {
+			alert("ya gotta type something to search, ya dingus!");
+		} else {
+			document.getElementById("searchForm").setAttribute("action", actionURL);
+		}
 	}
 
 		
