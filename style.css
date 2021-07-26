@@ -1,17 +1,39 @@
 form {
-    width: 200px;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
 }
 
 h3 {
-
+    font-family: 'Otomanopee One',Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
 }
 
-.radioBtn {
-
+#textInput {
+    width: 300px;
+    margin-left: auto;
 }
 
-.submitBtn {
-    
+#radioBtn {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+img {
+    display: inline-block;
+    max-width: 279px;
+    max-height: 170px;
+}
+
+input[type="radio"] {
+    margin-top: -1px;
+    vertical-align: middle;
+}
+
+#submitBtn {
+    display: block;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
