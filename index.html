@@ -7,42 +7,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
 	<script>
-	let actions = {
-		"google" : "https://www.google.com/search",
-		"duckDuckGo" : "https://duckduckgo.com/",
-		"bing" : "https://www.bing.com/search",
-		"ask" : "https://www.ask.com/web",
-	}
+		window.addEventListener("load", function(){
+			let actions = {
+				"google" : "https://www.google.com/search",
+				"duckDuckGo" : "https://duckduckgo.com/",
+				"bing" : "https://www.bing.com/search",
+				"ask" : "https://www.ask.com/web",
+			}	
+			
+			function setSearchEngine () {
 
-	function setSearchEngine () {
-		if (document.querySelector("input[name=engine]:checked").getAttribute("value").length === 0) {
-			alert("ya gotta select a search engine, ya dingus!");
-		} else {
-			let actionURL = actions[eng];
-		}
-		if (document.getElementsByTagName("input").getAttribute("value").length === 0) {
-			alert("ya gotta type something to search, ya dingus!");
-		} else {
-			document.getElementById("searchForm").setAttribute("action", actionURL);
-		}
-	}
+				if (document.querySelector("input[name=engine]:checked") === null) {
+					alert("ya gotta select a search engine, ya dingus!");
+					event.preventDefault();
+				} else {
+					let actionURL = actions[document.querySelector("input[name=engine]:checked").getAttribute("value")];
+				}
 
-		
- 	window.addEventListener("load", function(){
-    
-		document.getElementById("searchForm").addEventListener("submit", setSearchEngine);
-    });
+				if (document.getElementsByTagName("input")[0].getAttribute("value") === null) {
+					alert("ya gotta type something to search, ya doofus!");
+					event.preventDefault();
+				} else {
+					document.getElementById("searchForm").setAttribute("action", actionURL);
+				}
+				
+			}
+			
+			document.querySelector("form").addEventListener("submit", setSearchEngine);
+		});
 	</script>
 </head>
 
 <body>
-	<form id="searchForm">
+	<form id="searchForm" method="GET">
     	<label><h3>Enter search query here:</h3><input id="textInput" type="text" name="q" /></label><br />
 
-		<label id="radioBtn"><input type="radio" name="engine" value="google" /><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1920px-Google_2015_logo.svg.png"></label><br />
-		<label id="radioBtn"><input type="radio" name="engine" value="duckDuckGo" /><img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/DuckDuckGo_logo.svg/1280px-DuckDuckGo_logo.svg.png"></label><br />
-		<label id="radioBtn"><input type="radio" name="engine" value="bing" /><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Microsoft_Bing_logo.svg/1920px-Microsoft_Bing_logo.svg.png"></label><br />
-		<label id="radioBtn"><input type="radio" name="engine" value="ask" /><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Ask.com_Logo.svg/1280px-Ask.com_Logo.svg.png"></label><br />
+		<label id="radioBtn"><input type="radio" name="engine" value="google" /><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1920px-Google_2015_logo.svg.png"></label>
+		<label id="radioBtn"><input type="radio" name="engine" value="duckDuckGo" /><img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/DuckDuckGo_logo.svg/1280px-DuckDuckGo_logo.svg.png"></label>
+		<label id="radioBtn"><input type="radio" name="engine" value="bing" /><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Microsoft_Bing_logo.svg/1920px-Microsoft_Bing_logo.svg.png"></label>
+		<label id="radioBtn"><input type="radio" name="engine" value="ask" /><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Ask.com_Logo.svg/1280px-Ask.com_Logo.svg.png"></label>
 
 		<input id="submitBtn" type="submit" value="less gooo....">
 	</form>
