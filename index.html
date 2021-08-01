@@ -16,15 +16,18 @@
 			}	
 			
 			function setSearchEngine () {
+				
+				let selectedEngine = document.querySelector("input[name=engine]:checked")
+				let actionURL = "";
 
-				if (document.querySelector("input[name=engine]:checked") === null) {
+				if (selectedEngine === null) {
 					alert("ya gotta select a search engine, ya dingus!");
 					event.preventDefault();
 				} else {
-					let actionURL = actions[document.querySelector("input[name=engine]:checked").getAttribute("value")];
+					actionURL = actions[selectedEngine.getAttribute("value")];
 				}
 
-				if (document.getElementsByTagName("input")[0].getAttribute("value") === null) {
+				if (document.querySelector("input[name=q]").value === "") {
 					alert("ya gotta type something to search, ya doofus!");
 					event.preventDefault();
 				} else {
